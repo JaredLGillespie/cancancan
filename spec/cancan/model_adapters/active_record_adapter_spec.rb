@@ -416,7 +416,6 @@ if defined? CanCan::ModelAdapters::ActiveRecordAdapter
       end
     end
 
-    # TODO: this test does not pass. we are currently not able to generate a query for this situation.
     context 'when a table references another one twice' do
       before do
         ActiveRecord::Schema.define do
