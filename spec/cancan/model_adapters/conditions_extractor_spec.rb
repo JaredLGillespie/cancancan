@@ -133,6 +133,17 @@ if defined? CanCan::ModelAdapters::ConditionsExtractor
                                  users_articles: { name: 'deep' },
                                  mentioned_users_articles_2: { name: 'd2' })
       end
+
+      it 'converts complex nested sets with duplicates' do
+        original_conditions = { sender: { id: 'sender', articles: { id: 'article1' } },
+                                receiver: { id: 'receiver', articles: { id: 'article2' } } }
+
+        conditions = described_class.new(Transaction).tableize_conditions(original_conditions)
+        expect(conditions).to eq(users: { id: 'sender'},
+                                 articles: { id: 'article1'},
+                                 receivers_transactions: { id: 'receiver'},
+                                 articles_users: { id: 'article2'})
+      end
     end
   end
 end
