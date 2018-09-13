@@ -139,10 +139,10 @@ if defined? CanCan::ModelAdapters::ConditionsExtractor
                                 receiver: { id: 'receiver', articles: { id: 'article2' } } }
 
         conditions = described_class.new(Transaction).tableize_conditions(original_conditions)
-        expect(conditions).to eq(users: { id: 'sender'},
-                                 articles: { id: 'article1'},
-                                 receivers_transactions: { id: 'receiver'},
-                                 articles_users: { id: 'article2'})
+        expect(conditions).to eq(users: { id: 'sender' },
+                                 articles: { id: 'article1' },
+                                 receivers_transactions: { id: 'receiver' },
+                                 articles_users: { id: 'article2' })
       end
     end
   end
